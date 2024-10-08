@@ -36,6 +36,8 @@ spec:
           env:
           - name: SKUPPER_CONFIG_SYNC_IMAGE
             value:  "{{ .Values.configSyncImage.repository }}:{{ .Values.configSyncImage.tag | default .Chart.AppVersion }}"
+          - name: SKUPPER_ROUTER_IMAGE
+            value:  "{{ .Values.routerImage.repository }}:{{ .Values.routerImage.tag | default "main" }}"
           {{- if not .Values.clusterScoped }}
           - name: WATCH_NAMESPACE
             valueFrom:

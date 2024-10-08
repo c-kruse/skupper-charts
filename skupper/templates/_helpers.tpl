@@ -61,6 +61,7 @@ Create the name of the service account to use
 {{- end }}
 {{- end }}
 
+
 {{/*
 Controller Arguments
 */}}
@@ -75,5 +76,29 @@ Controller Arguments
 - "-grant-server-podname={{ .Values.grants.serverPodname }}"
 - "-grant-server-port={{ .Values.grants.serverPort }}"
 - "-grant-server-tls-credentials={{ .Values.grants.serverTLSCredentials }}"
+{{- end }}
+{{- if .Values.access.defaultType }}
+- "-default-access-type={{ .Values.access.defaultType }}"
+{{- end }}
+{{- if .Values.access.enabledTypes }}
+- "-enabled-access-types={{ .Values.access.enabledTypes }}"
+{{- end }}
+{{- if .Values.access.gateway.class }}
+- "-gateway-class={{ .Values.access.gateway.class }}"
+{{- end }}
+{{- if .Values.access.gateway.domain }}
+- "-gateway-domain={{ .Values.access.gateway.domain }}"
+{{- end }}
+{{- if .Values.access.gateway.port }}
+- "-gateway-port={{ .Values.access.gateway.port }}"
+{{- end }}
+{{- if .Values.access.nodeport.clusterHost }}
+- "-cluster-host={{ .Values.access.nodeport.clusterHost }}"
+{{- end }}
+{{- if .Values.access.nginx.domain }}
+- "-ingress-domain={{ .Values.access.nginx.domain }}"
+{{- end }}
+{{- if .Values.access.contour.domain }}
+- "-http-proxy-domain={{ .Values.access.contour.domain }}"
 {{- end }}
 {{- end }}

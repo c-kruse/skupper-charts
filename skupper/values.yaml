@@ -19,6 +19,9 @@ image:
 configSyncImage:
   repository: "quay.io/skupper/config-sync"
   tag: ""
+routerImage:
+  repository: "quay.io/skupper/skupper-router"
+  tag: "3.0.0"
 
 # podLabels for controller pods
 podLabels:
@@ -39,11 +42,38 @@ podSecurityContext:
     type: RuntimeDefault
 
 grants:
+  # enable the grants server
   enabled: true
+  # Automatically configure the URL and TLS credentials for the AccessGrant Server.
   autoconfigure: true
 
+  # The base url through which the AccessGrant server can be reached.
   baseURL: ""
+  # The name of the pod in which the AccessGrant server is running.
   serverPodname: ""
+  # The port on which the AccessGrant server should listen. (default 9090)
   serverPort: ""
+  # The name of a secret in which TLS credentials for the AccessGrant server are found. (default "skupper-grant-server")
   serverTLSCredentials: ""
+
+access:
+  # default access type
+  defaultType: ""
+  enabledTypes: ""
+  gateway:
+    # The class of Gateway to use.
+    class: ""
+    # The domain to use in constructing the fully qualified hostname for TLSRoutes resources.
+    domain: ""
+    # The port the Gateway should be configured to listen on.
+    port: ""
+  nodeport:
+    # The hostname or IP address through which the cluster can be reached.
+    clusterHost: ""
+  nginx:
+    # The domain to use in constructing the fully qualified hostname for Ingress resources, through which the ingress controller can be reached.
+    domain: ""
+  contour:
+    # The domain to use in constructing the fully qualified hostname for contour HttpProxy resources, through which the contour controller can be reached.
+    domain: ""
 
