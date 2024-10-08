@@ -1,0 +1,49 @@
+# Install Skupper CRDs
+crds:
+  enabled: true
+
+
+# Cluster scoped or namesapce scoped
+clusterScoped: true
+
+rbac:
+  # create RBAC resources
+  create: true
+  serviceAccountName: ""
+
+image:
+  repository: "quay.io/skupper/controller"
+  tag: ""
+  pullPolicy: "Always"
+
+configSyncImage:
+  repository: "quay.io/skupper/config-sync"
+  tag: ""
+
+# podLabels for controller pods
+podLabels:
+
+# overrideServiceAccount changes the default service account.
+overrideServiceAccount: ""
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+
+# podSecurityContext
+podSecurityContext:
+  runAsNonRoot: true
+  seccompProfile:
+    type: RuntimeDefault
+
+grants:
+  enabled: true
+  autoconfigure: true
+
+  baseURL: ""
+  serverPodname: ""
+  serverPort: ""
+  serverTLSCredentials: ""
+

@@ -1,0 +1,3 @@
+# Skupper Controller installed in namespace {{ .Release.Namespace }}
+
+Scope: {{if .Values.clusterScoped -}}Cluster{{- else }}Namespaced{{- end }}

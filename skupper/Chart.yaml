@@ -1,0 +1,15 @@
+apiVersion: v2
+name: skupper
+description: Install skupper
+type: application
+version: 0.1.0
+appVersion: "2.0.0-preview-1"
+keywords:
+  - skupper
+  - controller
+sources:
+  - https://github.com/skupperproject/skupper
+dependencies:
+  - name: crds
+    version: "0.0.0"
+    condition: crds.enabled
