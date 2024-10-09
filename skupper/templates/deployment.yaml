@@ -38,6 +38,14 @@ spec:
             value:  "{{ .Values.configSyncImage.repository }}:{{ .Values.configSyncImage.tag | default .Chart.AppVersion }}"
           - name: SKUPPER_ROUTER_IMAGE
             value:  "{{ .Values.routerImage.repository }}:{{ .Values.routerImage.tag | default "main" }}"
+          {{- if .Values.configSyncImage.pullPolicy }}
+          - name: SKUPPER_CONFIG_SYNC_IMAGE_PULL_POLICY
+            value:  "{{ .Values.configSyncImage.pullPolicy }}"
+          {{- end }}
+          {{- if .Values.routerImage.pullPolicy }}
+          - name: SKUPPER_ROUTER_IMAGE_PULL_POLICY
+            value:  "{{ .Values.routerImage.pullPolicy }}"
+          {{- end }}
           {{- if not .Values.clusterScoped }}
           - name: WATCH_NAMESPACE
             valueFrom:

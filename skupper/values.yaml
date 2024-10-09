@@ -19,9 +19,12 @@ image:
 configSyncImage:
   repository: "quay.io/skupper/config-sync"
   tag: ""
+  pullPolicy: ""
+
 routerImage:
   repository: "quay.io/skupper/skupper-router"
   tag: "3.0.0"
+  pullPolicy: ""
 
 # podLabels for controller pods
 podLabels:
