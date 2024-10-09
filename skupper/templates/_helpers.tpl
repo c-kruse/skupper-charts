@@ -46,6 +46,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Selector labels
 */}}
 {{- define "skupper.selectorLabels" -}}
+application: skupper-controller
 app.kubernetes.io/name: {{ include "skupper.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
