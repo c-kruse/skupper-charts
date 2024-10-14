@@ -1,0 +1,8 @@
+# value overrides to use the most recent skupper development images instead of
+# the published release
+configSyncImage:
+  tag: v2-latest
+controller:
+  tag: v2-latest
+routerImage:
+  tag: main

@@ -11,7 +11,7 @@ rbac:
   create: true
   serviceAccountName: ""
 
-image:
+controller:
   repository: "quay.io/skupper/controller"
   tag: ""
   pullPolicy: "Always"
