@@ -1,6 +1,6 @@
-{{- if and .Values.rbac.create (not .Values.clusterScoped) -}}
+{{- if and .Values.rbac.create -}}
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: {{ if .Values.clusterScoped -}} ClusterRoleBinding {{- else }} RoleBinding {{- end }}
 metadata:
   name: {{ include "skupper.fullname" . }}
   labels:
@@ -8,8 +8,10 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: {{ include "skupper.serviceAccountName" . }}
+  {{- if .Values.clusterScoped }}
+  namespace: {{ .Release.Namespace }} {{- end }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
+  kind: {{ if .Values.clusterScoped -}} ClusterRole {{- else }} Role {{- end }}
   name: {{ include "skupper.fullname" . }}
 {{- end }}
