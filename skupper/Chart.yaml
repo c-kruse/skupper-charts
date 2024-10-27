@@ -2,8 +2,8 @@ apiVersion: v2
 name: skupper
 description: Install skupper
 type: application
-version: 0.1.0
-appVersion: "2.0.0-preview-1"
+version: 0.2.0-devel
+appVersion: "v2-latest"
 keywords:
   - skupper
   - controller
